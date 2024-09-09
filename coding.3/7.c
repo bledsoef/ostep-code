@@ -9,18 +9,18 @@ int main(int argc, char *argv[]) {
   fprintf(stderr, "fork failed\n");
   exit(1);
  } else if (rc == 0) {
-  printf("WAHHH WAHHH I AM A CHILD \n");
+  close(STDOUT_FILENO);
+  printf("some output \n");
  } else {
-  int wc = waitpid(rc, NULL, 0); // where the wait went before I added it to the child process.
-  printf("%d\n", wc);
+  printf("some output1 \n");
 }
  return 0;
 }
 
 /*
 Finn Bledsoe
-Question 6:
+Question 7:
 
-waitpid() seems like it is best used for when you may have multiple child processes running and you want to wait on a particular one.
+The printf does not output anything if standard output is closed/
 
 */
